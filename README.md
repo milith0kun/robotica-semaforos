@@ -7,11 +7,6 @@
 
 ---
 
-## 📸 Montaje Experimental Físico
-![Montaje real en protoboard](docs/img/captura_real_laboratorio.png)
-
----
-
 ## 📁 Estructura del Repositorio
 
 ```text
@@ -36,11 +31,14 @@ Robotica/
 │   ├── diagram.json                   # Esquema con pulsador e INPUT_PULLUP
 │   ├── wokwi-project.txt              # Configuración de Wokwi
 │   └── README.md                      # Diagrama de estados FSM
+├── informe_latex/                     # Informe Académico Completo en LaTeX
+│   ├── main.tex                       # Código fuente LaTeX
+│   ├── main.pdf                       # PDF compilado (6 páginas)
+│   └── img/                           # Capturas reales de las simulaciones Wokwi
 ├── docs/
 │   ├── analisis_y_diseno.md           # Memoria técnica completa de ingeniería
-│   └── img/
-│       └── captura_real_laboratorio.png # Fotografía real del montaje en laboratorio
-├── INFORME_LABORATORIO.md             # Informe completo de laboratorio
+│   └── img/                           # Capturas de las simulaciones
+├── INFORME_LABORATORIO.md             # Informe completo en formato Markdown
 ├── .gitignore                         # Filtro de archivos no deseados
 └── README.md                          # Este archivo principal
 ```
@@ -65,4 +63,4 @@ Robotica/
 
 ## 🔗 Trazabilidad
 - **ID de Sesión de Desarrollo:** `231cda85-c992-4f6b-8f80-94698b1b354a`
-- **Informe de Laboratorio:** Consulte [`INFORME_LABORATORIO.md`](INFORME_LABORATORIO.md) para la memoria descriptiva completa.
+- **Informe de Laboratorio:** Consulte [`informe_latex/main.pdf`](informe_latex/main.pdf) y [`INFORME_LABORATORIO.md`](INFORME_LABORATORIO.md).

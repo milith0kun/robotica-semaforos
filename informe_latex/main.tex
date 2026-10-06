@@ -11,7 +11,6 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{float}
-\usepackage{subcaption}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 
@@ -91,10 +90,10 @@
 
 % --- Resumen ---
 \begin{abstract}
-En esta práctica de laboratorio se diseñaron, analizaron teóricamente, implementaron y simularon cuatro circuitos secuenciales y de control digital aplicados a la semaforización urbana inteligente. Se aborda desde el parpadeo periódico elemental de un diodo emisor de luz (LED), pasando por el ciclo vehicular normado (MUTCD), el semáforo mixto vehicular-peatonal con despeje de seguridad (\textit{All-Red}), hasta culminar en un semáforo a demanda gobernado por pulsador y una Máquina de Estados Finitos (FSM) no bloqueante con temporización mediante \texttt{millis()}. El informe incluye cálculos rigurosos por Ley de Ohm, disipación de potencia térmica, esquemas de conexión, capturas reales del simulador Wokwi y evidencia fotográfica del montaje físico en protoboard.
+En esta práctica de laboratorio se diseñaron, analizaron teóricamente, implementaron y simularon cuatro circuitos secuenciales y de control digital aplicados a la semaforización urbana inteligente sobre la plataforma Arduino UNO. Se aborda desde el parpadeo periódico elemental de un diodo emisor de luz (LED), pasando por el ciclo vehicular normado (MUTCD), el semáforo mixto vehicular-peatonal con despeje de seguridad (\textit{All-Red}), hasta culminar en un semáforo a demanda gobernado por pulsador y una Máquina de Estados Finitos (FSM) no bloqueante con temporización mediante \texttt{millis()}. El informe incluye cálculos rigurosos por Ley de Ohm, disipación de potencia térmica, esquemas de conexión, tablas de estados y capturas de las simulaciones ejecutadas en Wokwi.
 \end{abstract}
 
-\noindent\textbf{Palabras Clave:} Arduino, Microcontroladores, Semáforo MUTCD, Máquina de Estados Finitos (FSM), Ley de Ohm, Wokwi.
+\noindent\textbf{Palabras Clave:} Arduino UNO, Microcontroladores, Semáforo MUTCD, Máquina de Estados Finitos (FSM), Ley de Ohm, Simulación Wokwi.
 
 \section{Fundamento Teórico y Cálculos de Diseño}
 
@@ -110,7 +109,7 @@ Por la \textbf{Ley de Ohm} ($V_R = I_f \cdot R_s$):
     R_s = \frac{V_{GPIO} - V_f}{I_f}
 \end{equation}
 
-\noindent Para $V_{GPIO} = 5.0\text{ V}$, un diodo LED rojo con $V_f \approx 2.0\text{ V}$ y corriente de diseño $I_f = 13.6\text{ mA}$:
+\noindent Para $V_{GPIO} = 5.0\text{ V}$ (Arduino UNO), un diodo LED rojo con $V_f \approx 2.0\text{ V}$ y corriente de diseño $I_f = 13.6\text{ mA}$:
 \begin{equation}
     R_s = \frac{5.0\text{ V} - 2.0\text{ V}}{0.0136\text{ A}} = 220.58\ \Omega \implies R_{\text{comercial}} = 220\ \Omega
 \end{equation}
@@ -121,29 +120,6 @@ La potencia eléctrica disipada en el resistor por efecto Joule es:
     P_R = I_f^2 \cdot R_s = (0.0136\text{ A})^2 \cdot 220\ \Omega \approx 0.0407\text{ W} = 40.7\text{ mW}
 \end{equation}
 Al emplear resistores comerciales de $0.25\text{ W}$ ($250\text{ mW}$), la carga térmica opera con un factor de seguridad mayor al $600\%$.
-
-\section{Evidencia del Montaje Físico Experimental}
-
-En la Figura~\ref{fig:montajes_fisicos} se presentan las fotografías del banco de pruebas real en laboratorio, donde la placa de desarrollo se encuentra montada sobre el protoboard y energizada mediante conexión serie USB, evidenciando las transiciones de estado durante la ejecución.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{img/montaje_fisico_1.png}
-        \caption{Estado inicial / Reposo con LED activo.}
-        \label{fig:fisico1}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{img/montaje_fisico_2.png}
-        \caption{Transición y conmutación de estado.}
-        \label{fig:fisico2}
-    \end{subfigure}
-    \caption{Evidencia experimental del montaje físico sobre protoboard en banco de trabajo.}
-    \label{fig:montajes_fisicos}
-\end{figure}
 
 \section{Desarrollo y Resultados de las Simulaciones}
 
@@ -172,7 +148,7 @@ void loop() {
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.88\textwidth]{img/circuito_1_wokwi.png}
+    \includegraphics[width=0.92\textwidth]{img/circuito_1_wokwi.png}
     \caption{Simulación ejecutada del Circuito 1 en Wokwi mostrando el monitor serial y conmutación del LED.}
     \label{fig:sim1}
 \end{figure}
@@ -198,7 +174,7 @@ void loop() {
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.88\textwidth]{img/circuito_2_wokwi.png}
+    \includegraphics[width=0.92\textwidth]{img/circuito_2_wokwi.png}
     \caption{Simulación ejecutada del Semáforo Americano en Wokwi con logs de sincronización serial.}
     \label{fig:sim2}
 \end{figure}
@@ -227,14 +203,14 @@ void loop() {
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.88\textwidth]{img/circuito_3_wokwi.png}
+    \includegraphics[width=0.92\textwidth]{img/circuito_3_wokwi.png}
     \caption{Simulación ejecutada del Semáforo Mixto en Wokwi evidenciando la alternancia entre autos y personas.}
     \label{fig:sim3}
 \end{figure}
 
 % ------------------------------------------------------------------------------
 \subsection{Circuito 4: Semáforo con Botón Peatonal a Demanda (FSM No Bloqueante)}
-\textbf{Objetivo:} Automatización reactiva a demanda mediante pulsador en pin digital \texttt{D2} con resistencia pull-up interna activada (\texttt{INPUT\_PULLUP}). Se implementa una **Máquina de Estados Finitos (FSM) no bloqueante** con \texttt{millis()} y filtro antirrebote (\textit{debounce}) de $200\text{ ms}$, asegurando un tiempo mínimo de verde vehicular de $4\text{ s}$ para evitar retenciones de tráfico ante pulsaciones consecutivas.
+\textbf{Objetivo:} Automatización reactiva a demanda mediante pulsador en pin digital \texttt{D2} con resistencia pull-up interna activada (\texttt{INPUT\_PULLUP}). Se implementa una \textbf{Máquina de Estados Finitos (FSM) no bloqueante} con \texttt{millis()} y filtro antirrebote (\textit{debounce}) de $200\text{ ms}$, asegurando un tiempo mínimo de verde vehicular de $4\text{ s}$ para evitar retenciones de tráfico ante pulsaciones consecutivas.
 
 \begin{lstlisting}[language=C++, caption={Lógica no bloqueante y antirrebote del Circuito 4}]
 void verificarBoton() {
@@ -253,7 +229,7 @@ void verificarBoton() {
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.88\textwidth]{img/circuito_4_wokwi.png}
+    \includegraphics[width=0.92\textwidth]{img/circuito_4_wokwi.png}
     \caption{Simulación ejecutada del Semáforo Inteligente con Botón Peatonal en Wokwi y monitor serial.}
     \label{fig:sim4}
 \end{figure}
@@ -281,7 +257,7 @@ void verificarBoton() {
     \item \textbf{Cálculo y Protección Circuital:} La elección del resistor limitador de $220\ \Omega$ mediante la Ley de Ohm garantiza una corriente de operación óptima de $13.6\text{ mA}$, operando en una zona segura respecto al límite del microcontrolador ($40\text{ mA}$).
     \item \textbf{Seguridad Vial en Sistemas Embebidos:} La integración de periodos \textit{All-Red} y parpadeos de fin de cruce asegura la integridad del peatón y elimina riesgos de colisión por cruces simultáneos.
     \item \textbf{Ventajas de la Arquitectura FSM No Bloqueante:} El uso de \texttt{millis()} frente a \texttt{delay()} en el Circuito 4 elimina la latencia del sistema, permitiendo registrar eventos asíncronos en tiempo real con filtrado antirrebote eficiente.
-    \item \textbf{Integración Dual Simulación y Hardware:} Se validó la correspondencia entre la simulación en Wokwi y la plataforma física sobre protoboard.
+    \item \textbf{Validación Integral en Simulador:} Se verificó el funcionamiento secuencial y la lógica de control a través de las simulaciones en Wokwi con salida en tiempo real en el monitor serie.
 \end{enumerate}
 
 \section{Referencias y Trazabilidad}
