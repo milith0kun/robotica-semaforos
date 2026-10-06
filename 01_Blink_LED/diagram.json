@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "author": "Robotica",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 40, "left": 60, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -40, "left": 230, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 10, "left": 220, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "uno:8", "led1:A", "green", [ "v-20", "h40" ] ],
+    [ "led1:C", "r1:1", "black", [ "v10" ] ],
+    [ "r1:2", "uno:GND.1", "black", [ "v20", "h-70" ] ]
+  ],
+  "dependencies": {}
+}

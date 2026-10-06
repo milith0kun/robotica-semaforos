@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "author": "Robotica",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 100, "attrs": {} },
+    { "type": "wokwi-led", "id": "led_red", "top": -40, "left": 200, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led_yellow", "top": 0, "left": 200, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "led_green", "top": 40, "left": 200, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r_red", "top": -30, "left": 270, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r_yellow", "top": 10, "left": 270, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r_green", "top": 50, "left": 270, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "uno:8", "led_red:A", "red", [ "v-30", "h40" ] ],
+    [ "led_red:C", "r_red:1", "black", [ "v0" ] ],
+    [ "r_red:2", "uno:GND.1", "black", [ "v30", "h-100" ] ],
+
+    [ "uno:9", "led_yellow:A", "orange", [ "v-20", "h30" ] ],
+    [ "led_yellow:C", "r_yellow:1", "black", [ "v0" ] ],
+    [ "r_yellow:2", "uno:GND.1", "black", [ "v20", "h-100" ] ],
+
+    [ "uno:10", "led_green:A", "green", [ "v-10", "h20" ] ],
+    [ "led_green:C", "r_green:1", "black", [ "v0" ] ],
+    [ "r_green:2", "uno:GND.1", "black", [ "v10", "h-100" ] ]
+  ],
+  "dependencies": {}
+}

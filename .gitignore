@@ -1,0 +1,11 @@
+# Archivos temporales y de compilación
+*.hex
+*.elf
+*.bin
+build/
+.vscode/
+.idea/
+*.tmp
+*~
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "Robotica",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 150, "left": 100, "attrs": {} },
+    { "type": "wokwi-led", "id": "led_v_rojo", "top": -60, "left": 160, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led_v_amarillo", "top": -20, "left": 160, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "led_v_verde", "top": 20, "left": 160, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": -50, "left": 210, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": -10, "left": 210, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 30, "left": 210, "attrs": { "value": "220" } },
+
+    { "type": "wokwi-led", "id": "led_p_rojo", "top": -40, "left": 320, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led_p_verde", "top": 0, "left": 320, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r4", "top": -30, "left": 370, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r5", "top": 10, "left": 370, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "uno:8", "led_v_rojo:A", "red", [ "v-30", "h10" ] ],
+    [ "led_v_rojo:C", "r1:1", "black", [ "v0" ] ],
+    [ "r1:2", "uno:GND.1", "black", [ "v40", "h-70" ] ],
+
+    [ "uno:9", "led_v_amarillo:A", "orange", [ "v-20", "h10" ] ],
+    [ "led_v_amarillo:C", "r2:1", "black", [ "v0" ] ],
+    [ "r2:2", "uno:GND.1", "black", [ "v30", "h-70" ] ],
+
+    [ "uno:10", "led_v_verde:A", "green", [ "v-10", "h10" ] ],
+    [ "led_v_verde:C", "r3:1", "black", [ "v0" ] ],
+    [ "r3:2", "uno:GND.1", "black", [ "v20", "h-70" ] ],
+
+    [ "uno:7", "led_p_rojo:A", "red", [ "v-40", "h140" ] ],
+    [ "led_p_rojo:C", "r4:1", "black", [ "v0" ] ],
+    [ "r4:2", "uno:GND.1", "black", [ "v50", "h-230" ] ],
+
+    [ "uno:6", "led_p_verde:A", "green", [ "v-30", "h150" ] ],
+    [ "led_p_verde:C", "r5:1", "black", [ "v0" ] ],
+    [ "r5:2", "uno:GND.1", "black", [ "v40", "h-230" ] ]
+  ],
+  "dependencies": {}
+}
